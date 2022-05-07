@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/circular_border.xml" value="0.1" />
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/circular_progress_bar.xml" value="0.2135" />
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2135" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/item_circular_border.xml" value="0.1" />
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/item_circular_color_accent_background.xml" value="0.2135" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/ripple_background.xml" value="0.1" />
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/layout/activity_exercise.xml" value="0.1" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/layout/activity_main.xml" value="0.264" />
       </map>
     </option>
