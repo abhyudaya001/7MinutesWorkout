@@ -3,6 +3,7 @@ package com.example.a7minutesworkout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.View
 import android.widget.Toast
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
 
@@ -11,6 +12,7 @@ class ExerciseActivity : AppCompatActivity() {
     private var myTimer:CountDownTimer?=null
     private var myTime=10
     private var exNo=1
+    private var exList:ArrayList<ExerciseModel>?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityExerciseBinding.inflate(layoutInflater)
@@ -23,9 +25,11 @@ class ExerciseActivity : AppCompatActivity() {
         binding?.toolbarExercise?.setNavigationOnClickListener {
             onBackPressed()
         }
+        exList=constants.exerciseList()
         timer()
     }
     private fun timer() {
+        binding?.exImg?.visibility=View.INVISIBLE
         myTimer=object:CountDownTimer(10000,1000) {
             override fun onTick(p0: Long) {
                 myTime--
@@ -34,7 +38,9 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding?.exName?.text="Exercise No. ${exNo}"
+                binding?.exImg?.visibility=View.VISIBLE
+                binding?.exImg?.setImageResource(exList!![exNo-1].getImage())
+                binding?.tvTitle?.text=exList!![exNo-1].getName()
                 binding?.progressbar?.max=25
                 exerciseTimer()
             }
@@ -52,8 +58,9 @@ class ExerciseActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 exNo++
-                if(exNo<3){
-                    binding?.exName?.text="Exercise No. ${exNo}"
+                if(exNo<=3){
+                    binding?.exImg?.setImageResource(exList!![exNo-1].getImage())
+                    binding?.tvTitle?.text=exList!![exNo-1].getName()
                     exerciseTimer()
                 }else{
                     Toast.makeText(this@ExerciseActivity,"Finished",Toast.LENGTH_SHORT).show()
