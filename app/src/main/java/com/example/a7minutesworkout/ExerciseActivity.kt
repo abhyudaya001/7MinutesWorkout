@@ -29,15 +29,18 @@ class ExerciseActivity : AppCompatActivity() {
         timer()
     }
     private fun timer() {
-        binding?.exImg?.visibility=View.INVISIBLE
         myTimer=object:CountDownTimer(10000,1000) {
             override fun onTick(p0: Long) {
                 myTime--
-                binding?.progressbar?.progress=myTime
-                binding?.tvTimer?.text=myTime.toString()
+                binding?.restpb?.progress=myTime
+                binding?.resttv?.text=myTime.toString()
             }
 
             override fun onFinish() {
+                binding?.flrestpb?.visibility=View.INVISIBLE
+                binding?.rvtitle?.visibility=View.INVISIBLE
+                binding?.flprogressbar?.visibility=View.VISIBLE
+                binding?.tvTitle?.visibility=View.VISIBLE
                 binding?.exImg?.visibility=View.VISIBLE
                 binding?.exImg?.setImageResource(exList!![exNo-1].getImage())
                 binding?.tvTitle?.text=exList!![exNo-1].getName()
