@@ -8,12 +8,12 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarExercise"
-        app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/ToolbarTheme"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/white"
-        app:titleTextColor="@color/black"/>
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/black" />
 
 
     <ImageView
@@ -50,10 +50,11 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/exImg"
+        app:layout_constraintBottom_toTopOf="@+id/flrestpb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flrestpb" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarExercise"
+        app:layout_constraintVertical_bias="0.808" />
 
     <FrameLayout
         android:id="@+id/flrestpb"
@@ -95,13 +96,40 @@
         </LinearLayout>
     </FrameLayout>
 
+
+    <TextView
+        android:id="@+id/upcex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming exercise"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/upcExName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flrestpb"
+        app:layout_constraintVertical_bias="0.69" />
+
+    <TextView
+        android:id="@+id/upcExName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
+        android:text="Exercise Name"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/flprogressbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <FrameLayout
-        android:visibility="invisible"
         android:id="@+id/flprogressbar"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/circular_border"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
