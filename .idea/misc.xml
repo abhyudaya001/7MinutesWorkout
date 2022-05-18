@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable-v24/circle_completed.xml" value="0.122" />
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable-v24/circle_current.xml" value="0.122" />
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/circle.xml" value="0.176" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/circular_border.xml" value="0.1" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/circular_progress_bar.xml" value="0.2135" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2135" />
@@ -11,6 +14,7 @@
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/drawable/ripple_background.xml" value="0.1" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/layout/activity_exercise.xml" value="0.264" />
         <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/fp/7MinutesWorkout/app/src/main/res/layout/current_ex_no.xml" value="0.1" />
       </map>
     </option>
   </component>

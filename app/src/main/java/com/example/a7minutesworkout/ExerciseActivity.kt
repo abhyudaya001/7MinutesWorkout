@@ -9,11 +9,13 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener{
     private var binding:ActivityExerciseBinding?=null
     private var myTimer:CountDownTimer?=null
     private var myTime=10
@@ -21,6 +23,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var exList:ArrayList<ExerciseModel>?=null
     private var player:MediaPlayer?=null
     private var tts:TextToSpeech?=null
+    private var exerciseAdapter:exNoAdapter?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityExerciseBinding.inflate(layoutInflater)
@@ -36,6 +39,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
         exList=constants.exerciseList()
         timer()
+        setupExStatusRV()
+    }
+    private fun setupExStatusRV(){
+        binding?.rvList?.layoutManager=
+            LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        exerciseAdapter=exNoAdapter(exList!!)
+        binding?.rvList?.adapter=exerciseAdapter
     }
     private fun timer() {
         binding?.upcExName?.text="${exList!![exNo-1].getName()}"
@@ -60,12 +70,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding?.exImg?.setImageResource(exList!![exNo-1].getImage())
                 binding?.tvTitle?.text=exList!![exNo-1].getName()
                 binding?.progressbar?.max=25
+                exList!![exNo-1].setIsSelected(true)
+                exerciseAdapter!!.notifyDataSetChanged()
                 exerciseTimer()
             }
         }.start()
     }
     private fun exerciseTimer() {
-
         var cdTime=25;
         speak("Start")
         myTimer=object :CountDownTimer(25000,1000){
@@ -87,6 +98,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
 
             override fun onFinish() {
+                exList!![exNo-1].setIsComplete(true)
+                exerciseAdapter!!.notifyDataSetChanged()
                 exNo++
                 if(exNo<=3){
                     binding?.flrestpb?.visibility=View.VISIBLE
