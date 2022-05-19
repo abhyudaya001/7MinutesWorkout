@@ -1,5 +1,6 @@
 package com.example.a7minutesworkout
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -51,7 +52,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener{
         binding?.upcExName?.text="${exList!![exNo-1].getName()}"
         speak("Get ready for ${exList!![exNo-1].getName()}")
         myTime=10;
-        myTimer=object:CountDownTimer(10000,1000) {
+        myTimer=object:CountDownTimer(3000,1000) {
             override fun onTick(p0: Long) {
                 myTime--
 //                if(myTime<=3)speak(myTime.toString())
@@ -79,7 +80,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener{
     private fun exerciseTimer() {
         var cdTime=25;
         speak("Start")
-        myTimer=object :CountDownTimer(25000,1000){
+        myTimer=object :CountDownTimer(3000,1000){
             override fun onTick(p0: Long) {
                 cdTime--
             if(cdTime==5){
@@ -98,6 +99,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener{
             }
 
             override fun onFinish() {
+                exList!![exNo-1].setIsSelected(false)
                 exList!![exNo-1].setIsComplete(true)
                 exerciseAdapter!!.notifyDataSetChanged()
                 exNo++
@@ -112,7 +114,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener{
                     binding?.progressbar?.max=10
                     timer()
                 }else{
-                    Toast.makeText(this@ExerciseActivity,"Finished",Toast.LENGTH_SHORT).show()
+                    val intent=Intent(this@ExerciseActivity,Finish_activity::class.java)
+                    startActivity(intent)
                 }
             }
 
