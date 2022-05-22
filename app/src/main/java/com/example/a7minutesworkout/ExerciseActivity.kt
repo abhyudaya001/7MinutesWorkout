@@ -1,5 +1,6 @@
 package com.example.a7minutesworkout
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
@@ -10,6 +11,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
@@ -134,6 +136,21 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener{
        }else{
            Log.e("TTS","Initialize failed")
        }
+    }
+    override fun onBackPressed() {
+        onStop()
+        var builder= AlertDialog.Builder(this@ExerciseActivity)
+        builder.setMessage("Do yo want to exit?")
+        builder.setTitle("Alert!")
+        builder.setCancelable(false)
+        builder.setPositiveButton("Yes", DialogInterface.OnClickListener(){
+                dialog,which->finish()
+        })
+        builder.setNegativeButton("No", DialogInterface.OnClickListener(){
+                dialog,which->dialog.cancel()
+        })
+        var alertDialog=builder.create()
+        alertDialog.show()
     }
     override fun onDestroy() {
         super.onDestroy()
