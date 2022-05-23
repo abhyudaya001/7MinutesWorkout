@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="Weight"
+        android:hint="Weight (in kg)"
         app:layout_constraintBottom_toTopOf="@+id/ti_hLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tb_bmi">
@@ -42,7 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="512dp"
-        android:hint="Height"
+        android:hint="Height (in cm)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -52,15 +52,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:textStyle="bold"
+        android:textSize="23dp"
+        android:textAlignment="center"
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/ti_hLayout"
+        app:layout_constraintBottom_toTopOf="@id/btn_cal"/>
+
     <Button
         android:id="@+id/btn_cal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ti_hLayout"
-        android:layout_marginLeft="31dp"
-        android:layout_marginRight="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:text="CALCULATE"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
